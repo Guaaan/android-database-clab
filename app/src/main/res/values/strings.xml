@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CLAB</string>
+    <string name="hint_id">id</string>
+    <string name="hint_nombre"> Nombre </string>
+    <string name="hint_precio_publico">precio_publico</string>
+    <string name="hint_existencias">existencias</string>
+</resources>
