@@ -6,11 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
-public class dbProductos extends DbHelper{
+public class DbProductos extends DbHelper{
 
     Context context;
 
-    public dbProductos(@Nullable Context context) {
+    public DbProductos(@Nullable Context context) {
         super(context);
         this.context = context;
     }

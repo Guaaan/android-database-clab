@@ -38,4 +38,12 @@
         android:ems="10"
         android:hint="@string/hint_existencias"
         android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/btn_guardar"
+        android:text="guardar registro"
+        android:textSize="24sp" />
 </LinearLayout>
