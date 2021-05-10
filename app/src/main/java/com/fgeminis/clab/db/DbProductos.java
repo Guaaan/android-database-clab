@@ -2,9 +2,14 @@ package com.fgeminis.clab.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
+
+import com.fgeminis.clab.entidades.Productos;
+
+import java.util.ArrayList;
 
 public class DbProductos extends DbHelper{
 
@@ -34,5 +39,29 @@ public class DbProductos extends DbHelper{
             ex.toString();
         }
         return identificador;
+    }
+    public ArrayList<Productos> mostrarProductos(){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList<Productos> listaProductos = new ArrayList<>();
+        Productos producto = null;
+        Cursor cursorProductos = null;
+
+        cursorProductos = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTOS, null );
+        if(cursorProductos.moveToFirst()) {
+            do{
+                producto = new Productos();
+                producto.setId(cursorProductos.getInt(0));
+                producto.setNombre(cursorProductos.getString(1));
+                producto.setPrecio_publico(cursorProductos.getString(2));
+                producto.setExistencias(cursorProductos.getString(3));
+                listaProductos.add(producto);
+            } while (cursorProductos.moveToNext());
+        }
+
+        cursorProductos.close();
+
+        return listaProductos;
     }
 }
