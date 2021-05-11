@@ -65,6 +65,8 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
                 public void onClick(View view){
                     Context context = view.getContext();
                     Intent intent = new Intent(context, VerActivity.class);
+                    intent.putExtra("ID", listaProductos.get(getAdapterPosition()).getId());
+                    context.startActivity(intent);
                 }
             });
         }

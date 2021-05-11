@@ -32,7 +32,7 @@ public class NuevoActivity extends AppCompatActivity {
                 DbProductos dbProductos = new DbProductos(NuevoActivity.this);
                 long id = dbProductos.insertarContacto(txtId.getText().toString(), txtNombre.getText().toString(), txtPrecioPublico.getText().toString(), txtExistencias.getText().toString());
 
-                if (id > 0) {
+                if (!txtNombre.getText().toString().equals("") && !) {
                     Toast.makeText(NuevoActivity.this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
                     limpiar();
                 } else {

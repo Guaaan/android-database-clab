@@ -45,8 +45,8 @@ public class DbProductos extends DbHelper{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ArrayList<Productos> listaProductos = new ArrayList<>();
-        Productos producto = null;
-        Cursor cursorProductos = null;
+        Productos producto;
+        Cursor cursorProductos;
 
         cursorProductos = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTOS, null );
         if(cursorProductos.moveToFirst()) {
@@ -63,5 +63,30 @@ public class DbProductos extends DbHelper{
         cursorProductos.close();
 
         return listaProductos;
+    }
+
+    public Productos verProductos(int id){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+        Productos producto = null;
+        Cursor cursorProductos;
+
+
+        cursorProductos = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTOS + "WHERE id = " + id + "LIMIT 1", null );
+
+        if(cursorProductos.moveToFirst()) {
+           producto = new Productos();
+           producto.setId(cursorProductos.getInt(0));
+            producto.setNombre(cursorProductos.getString(1));
+            producto.setPrecio_publico(cursorProductos.getString(2));
+            producto.setExistencias(cursorProductos.getString(3));
+
+        }
+
+        cursorProductos.close();
+
+        return producto;
     }
 }
